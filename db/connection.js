@@ -2,8 +2,8 @@ var mongoose = require("mongoose");
 const autoIncrement = require("mongoose-auto-increment");
 const config = require("config");
 
-var mongoDbconnection = async function () {
-  return new Promise((resolve, reject) => {
+var mongoDbconnection = function () {
+  return new Promise( async(resolve, reject) => {
     var url = await config.get("mongoUrl");
     // var url = 'mongodb://localhost:27017/employee-management';
     await mongoose.connect(
