@@ -1,6 +1,6 @@
 {
   "port": 8000,
-  "mongoUrl": "mongodb+srv://kunal:Kunal@123@cluster0.skto8.mongodb.net/employee-management?retryWrites=true&w=majority",
+  "mongoUrl": "mongodb+srv://kunal:Kunal@123@cluster0.skto8.mongodb.net/employee-management?retryWrites=true&w=majority&ssl=true",
   "jwtsecret": "jwtsecret",
   "jwtexpire": 800000
 }
