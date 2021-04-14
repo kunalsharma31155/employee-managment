@@ -4,9 +4,9 @@ const config = require("config");
 
 var mongoDbconnection = async function () {
   return new Promise((resolve, reject) => {
-    var url = config.get("mongoUrl");
+    var url = await config.get("mongoUrl");
     // var url = 'mongodb://localhost:27017/employee-management';
-    mongoose.connect(
+    await mongoose.connect(
       url,
       {
         useUnifiedTopology: true,
