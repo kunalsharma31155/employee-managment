@@ -1,6 +1,6 @@
 {
   "port": 6030,
-  "mongoUrl": "mongodb+srv://kunal:Kunal@123@cluster0.skto8.mongodb.net/employee-management?retryWrites=true&w=majority&ssl=true",
+  "mongoUrl": "mongodb://kunal:Kunal@123@cluster0-shard-00-00.skto8.mongodb.net:27017,cluster0-shard-00-01.skto8.mongodb.net:27017,cluster0-shard-00-02.skto8.mongodb.net:27017/employee-management?ssl=true&replicaSet=atlas-yb102j-shard-0&authSource=admin&retryWrites=true&w=majority",
   "jwtsecret": "jwtsecret",
   "jwtexpire": 800000
 }
