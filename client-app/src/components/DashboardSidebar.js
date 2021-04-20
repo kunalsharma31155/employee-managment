@@ -24,21 +24,21 @@ const items = [
     icon: BarChartIcon,
     title: 'Dashboard'
   },
-  {
-    href: '/app/employees',
-    icon: UserIcon,
-    title: 'Employees'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
+  // {
+  //   href: '/app/employees',
+  //   icon: UserIcon,
+  //   title: 'Employees'
+  // },
+  // {
+  //   href: '/app/account',
+  //   icon: UserIcon,
+  //   title: 'Account'
+  // },
+  // {
+  //   href: '/app/settings',
+  //   icon: SettingsIcon,
+  //   title: 'Settings'
+  // },
 ];
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {

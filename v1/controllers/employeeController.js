@@ -8,7 +8,6 @@ const employeeService = require("../services/employeeService");
 async function getEmployees(req, res, next) {
   try {
     var employees = await employeeService.getAllBySearch(req.query);
-    console.log(employees+"cdsvfs");
     sendRes(req, res, statusCode.SUCCESS, "", employees);
   } catch (error) {
     next(error);

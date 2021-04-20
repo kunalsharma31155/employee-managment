@@ -29,6 +29,7 @@ async function create(body) {
 
 async function countDocument(params) {
   try {
+    console.log(params)
     var params = {...params ,isDeleted: false };
     var countClocked = await Clocked.countDocuments(params);
     return countClocked;

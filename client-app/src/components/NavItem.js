@@ -13,9 +13,6 @@ const NavItem = ({
   ...rest
 }) => {
   const location = useLocation();
-  if(location == undefined){
-    console.log("dikkatttttttt");
-  }
   const active = href ? !!matchPath({
     path: href,
     end: false

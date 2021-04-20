@@ -24,8 +24,8 @@ app.use(handleErrorsApi);
 // app.set("view engine", "ejs");
 app.use("/static", express.static(path.join(__dirname, "./uploads/")));
 app.use(express.static(path.join(__dirname, 'client-app/build')))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client-app/build'))
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client-app/build', 'index.html'))
 })
 
 app.use(function (req, res, next) {
