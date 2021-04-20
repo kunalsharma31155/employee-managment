@@ -8,8 +8,7 @@
     "dev": "set NODE_ENV=dev&& nodemon server.js",
     "beta": "set NODE_ENV=beta&& nodemon server.js",
     "live": "set NODE_ENV=live& pm2 start server.js --name EMPLOYEE_MANAGEMENT",
-    "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm run dev"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
