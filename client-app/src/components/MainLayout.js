@@ -37,11 +37,13 @@ const MainLayout = () => {
   const { authState } = userSignin;
 
   useEffect(() => {
-    let isAdmin = localStorage.getItem("isAdmin");
-    if (isAdmin == "false") {
-      if (authState) navigate("/app/employeedashboard", { replace: true });
-    } else {
-      navigate("/app/dashboard", { replace: true });
+    if (authState) {
+      let isAdmin = localStorage.getItem("isAdmin");
+      if (isAdmin == "false") {
+        if (authState) navigate("/app/employeedashboard", { replace: true });
+      } else {
+        navigate("/app/dashboard", { replace: true });
+      }
     }
   }, [authState]);
 
