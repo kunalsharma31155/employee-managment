@@ -17,34 +17,45 @@ import {
 } from "react-feather";
 import NavItem from "./NavItem";
 
-const items = [
-  {
-    href: "/app/dashboard",
-    icon: BarChartIcon,
-    title: "Dashboard",
-  },
-  {
-    href: "/app/addemployee",
-    icon: UserIcon,
-    title: "Add Employees",
-  },
-  // {
-  //   href: '/app/employees',
-  //   icon: UserIcon,
-  //   title: 'Employees'
-  // },
-  // {
-  //   href: '/app/account',
-  //   icon: UserIcon,
-  //   title: 'Account'
-  // },
-  // {
-  //   href: '/app/settings',
-  //   icon: SettingsIcon,
-  //   title: 'Settings'
-  // },
-];
-
+var isAdmin = localStorage.getItem("isAdmin");
+let items = [];
+if (isAdmin == "true") {
+  items = [
+    {
+      href: "/app/dashboard",
+      icon: BarChartIcon,
+      title: "Dashboard",
+    },
+    {
+      href: "/app/addemployee",
+      icon: UserIcon,
+      title: "Add Employees",
+    },
+    // {
+    //   href: '/app/employees',
+    //   icon: UserIcon,
+    //   title: 'Employees'
+    // },
+    // {
+    //   href: '/app/account',
+    //   icon: UserIcon,
+    //   title: 'Account'
+    // },
+    // {
+    //   href: '/app/settings',
+    //   icon: SettingsIcon,
+    //   title: 'Settings'
+    // },
+  ];
+} else {
+  items = [
+    {
+      href: "/app/employeedashboard",
+      icon: BarChartIcon,
+      title: "Dashboard",
+    },
+  ];
+}
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
 
@@ -81,9 +92,11 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           }}
           to="/app/account"
         />
-        <Typography color="textPrimary" variant="h5">
-          {user.firstName + " " + user.lastName}
-        </Typography>
+        {isAdmin == "true" && (
+          <Typography color="textPrimary" variant="h5">
+            {user.firstName + " " + user.lastName}
+          </Typography>
+        )}
         <Typography color="textSecondary" variant="body2">
           {user.email}
         </Typography>

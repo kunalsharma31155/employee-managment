@@ -11,6 +11,7 @@ import {
   EMPLOYEE_GET_SUCCESS,
 } from "../utils/constants/employeeConstants";
 import LocalStorageService from "./localstorageService";
+import swal from "sweetalert";
 
 const accessToken = localStorage.getItem("access_token");
 
@@ -38,7 +39,13 @@ const addEmployee = (input) => async (dispatch) => {
   });
   try {
     const { data } = await axios.post("/api/v1/panel/employee/add", input);
-    dispatch({ type: EMPLOYEE_ADD_SUCCESS, payload: data.data });
+    swal({
+      title: "Success",
+      text: "Employee Added Successfully",
+      icon: "success",
+      button: "Ok",
+    });
+    // dispatch({ type: EMPLOYEE_ADD_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({ type: EMPLOYEE_ERROR, payload: error.response.data.message });
   }

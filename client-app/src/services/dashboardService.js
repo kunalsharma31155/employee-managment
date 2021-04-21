@@ -1,4 +1,5 @@
 import axios from "axios";
+import swal from "sweetalert";
 import {
   DASHBOARD_DATA_LOADING,
   DASHBOARD_DATA_SUCCESS,
@@ -44,7 +45,21 @@ const clockInEmployee = (isClockIn) => async (dispatch) => {
         },
       }
     );
-    dispatch({ type: DASHBOARD_DATA_SUCCESS, payload: data.data });
+
+    let msg = "";
+    if (isClockIn) {
+      msg = "Clock in successfully";
+    } else {
+      msg = "Clock out successfully";
+    }
+
+    swal({
+      title: msg,
+      text: data.message,
+      icon: "success",
+      button: "Ok",
+    });
+    //dispatch({ type: DASHBOARD_DATA_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: DASHBOARD_DATA_ERROR,
