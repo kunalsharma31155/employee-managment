@@ -7,7 +7,7 @@ const jwtSign = async (data) => {
       { _id: data._id },
       "jwtsecret",
       {
-        expiresIn: config.get("jwtexpire"),
+        expiresIn: 800000,
       }
     );
     return accessToken;
