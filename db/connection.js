@@ -4,17 +4,14 @@ const config = require("config");
 
 var mongoDbconnection = function () {
   return new Promise( async(resolve, reject) => {
-    // var url = await config.get("mongoUrl");
-    var url = "mongodb+srv://engagement:Mongodb@123@cluster0.r17es.mongodb.net/employee-management?retryWrites=true&w=majority";
+    var url = await config.get("mongoUrl");
     await mongoose.connect(
       url,
       {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify: false,
-        useCreateIndex: true,
-        server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } }
+        useCreateIndex: true
       },
       (error, result) => {
         if (error) {
