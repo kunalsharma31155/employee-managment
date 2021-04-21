@@ -1,1 +1,1 @@
-web: npm run beta
+web: npm run dev
