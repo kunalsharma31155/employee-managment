@@ -21,6 +21,7 @@ const loginEmployee = (input) => async (dispatch) => {
   });
   try {
     const { data } = await axios.post("/api/v1/panel/employee/login", input);
+    localStorage.setItem("isAdmin", false);
     localStorage.setItem("userData", JSON.stringify(data.data.user));
     LocalStorageService._setAccessToken(data.data.accessToken);
     debugger;

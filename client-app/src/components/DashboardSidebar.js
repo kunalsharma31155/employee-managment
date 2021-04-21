@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useEffect } from "react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -8,21 +8,25 @@ import {
   Drawer,
   Hidden,
   List,
-  Typography
-} from '@material-ui/core';
+  Typography,
+} from "@material-ui/core";
 import {
   BarChart as BarChartIcon,
   Settings as SettingsIcon,
   User as UserIcon,
-} from 'react-feather';
-import NavItem from './NavItem';
-
+} from "react-feather";
+import NavItem from "./NavItem";
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: "/app/dashboard",
     icon: BarChartIcon,
-    title: 'Dashboard'
+    title: "Dashboard",
+  },
+  {
+    href: "/app/addemployee",
+    icon: UserIcon,
+    title: "Add Employees",
   },
   // {
   //   href: '/app/employees',
@@ -43,50 +47,44 @@ const items = [
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
-  
+
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
   }, [location.pathname]);
-  
-  const user = JSON.parse(localStorage.getItem('userData'))
+
+  const user = JSON.parse(localStorage.getItem("userData"));
   const content = (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%'
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
       }}
     >
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          p: 2
+          alignItems: "center",
+          display: "flex",
+          flexDirection: "column",
+          p: 2,
         }}
       >
         <Avatar
           component={RouterLink}
-          src='/static/images/avatars/avatar_6.png'
+          src="/static/images/avatars/avatar_6.png"
           sx={{
-            cursor: 'pointer',
+            cursor: "pointer",
             width: 64,
-            height: 64
+            height: 64,
           }}
           to="/app/account"
         />
-        <Typography
-          color="textPrimary"
-          variant="h5"
-        >
-          {user.firstName+" "+user.lastName}
+        <Typography color="textPrimary" variant="h5">
+          {user.firstName + " " + user.lastName}
         </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
+        <Typography color="textSecondary" variant="body2">
           {user.email}
         </Typography>
       </Box>
@@ -117,8 +115,8 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           variant="temporary"
           PaperProps={{
             sx: {
-              width: 256
-            }
+              width: 256,
+            },
           }}
         >
           {content}
@@ -133,8 +131,8 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
             sx: {
               width: 256,
               top: 64,
-              height: 'calc(100% - 64px)'
-            }
+              height: "calc(100% - 64px)",
+            },
           }}
         >
           {content}
@@ -146,12 +144,12 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
 
 DashboardSidebar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 DashboardSidebar.defaultProps = {
-  onMobileClose: () => { },
-  openMobile: false
+  onMobileClose: () => {},
+  openMobile: false,
 };
 
 export default DashboardSidebar;

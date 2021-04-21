@@ -25,18 +25,26 @@ const getDashboardData = () => async (dispatch) => {
   }
 };
 
-const clockInEmployee = () => async (dispatch) => {
+const clockInEmployee = (isClockIn) => async (dispatch) => {
+  var userData = JSON.parse(localStorage.getItem("userData"));
+  let data = {
+    employee: userData.id,
+    isClockedIn: isClockIn,
+  };
   dispatch({
     type: DASHBOARD_DATA_LOADING,
   });
   try {
-    alert("hey");
-    // const { data } = await axios.get('/api/v1/panel/dashboard/get',{
-    //   headers: {
-    //     Authorization: accessToken,
-    //   },
-    // });
-    // dispatch({ type: DASHBOARD_DATA_SUCCESS, payload: data.data });
+    const { data } = await axios.post(
+      "/api/v1/panel/clocked/add",
+      {
+        headers: {
+          Authorization: accessToken,
+        },
+      },
+      data
+    );
+    dispatch({ type: DASHBOARD_DATA_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({
       type: DASHBOARD_DATA_ERROR,

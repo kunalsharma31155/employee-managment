@@ -41,13 +41,19 @@ const EmployeeDashboard = () => {
               variant="contained"
               color="primary"
               onClick={() => {
-                dispatch(clockInEmployee());
+                dispatch(clockInEmployee(true));
               }}
             >
               Clock In
             </Button>
             &nbsp;&nbsp;
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                dispatch(clockInEmployee(false));
+              }}
+            >
               Clock Out
             </Button>
           </Grid>
