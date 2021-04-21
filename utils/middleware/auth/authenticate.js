@@ -9,7 +9,7 @@ async function checkuserlogin(req,res,next) {
   try{
   var token =  req.headers["x-access-token"] || req.headers["authorization"];
   if (!token) throw new noAuth(messages.UNAUTHORIZED)
-     var verify= await jwt.verify(token, config.get('jwtsecret'));
+     var verify= await jwt.verify(token, 'jwtsecret');
   if(!verify) throw new noAuth(messages.UNAUTHORIZED)
      var user= await userService.get(verify._id);
     if(!user) throw new noAuth(messages.UNAUTHORIZED)
@@ -24,7 +24,7 @@ async function checkemployeelogin(req,res,next) {
   try{
   var token =  req.headers["x-access-token"] || req.headers["authorization"];
   if (!token) throw new noAuth(messages.UNAUTHORIZED)
-     var verify= await jwt.verify(token, config.get('jwtsecret'));
+     var verify= await jwt.verify(token, 'jwtsecret');
   if(!verify) throw new noAuth(messages.UNAUTHORIZED)
      var user= await employeeService.get(verify._id);
     if(!user) throw new noAuth(messages.UNAUTHORIZED)

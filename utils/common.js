@@ -5,7 +5,7 @@ const jwtSign = async (data) => {
   try {
     var accessToken = await jwt.sign(
       { _id: data._id },
-      config.get("jwtsecret"),
+      "jwtsecret",
       {
         expiresIn: config.get("jwtexpire"),
       }
