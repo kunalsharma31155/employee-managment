@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan("dev"));
 
-connection.mongoDbconnection();
+// connection.mongoDbconnection();
 
 // app.use("/api/v1", require("./v1/routes/frontend"));
  app.use("/api/v1/panel", require("./v1/routes/panel"));
@@ -46,4 +46,12 @@ socket(io);
 server.listen(process.env.PORT || config.get("port"), async () => {
   console.log(`Node env :${process.env.NODE_ENV}.`);
   console.log(`Server Running on port: ${config.get("port")}.`);
+});
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb+srv://engagement:Mongodb@123@cluster0.r17es.mongodb.net/employee-management?retryWrites=true&w=majority' , { useNewUrlParser: true , useUnifiedTopology: true ,useCreateIndex: true } ,
+    (err) => {
+    if(!err) { console.log('Mongo DB connected succeeded'); }
+    else { console.log('Error in MongoDB connection : ' + JSON.stringify(err, undefined , 2)); }
 });
