@@ -27,7 +27,7 @@ const getDashboardData = () => async (dispatch) => {
 
 const clockInEmployee = (isClockIn) => async (dispatch) => {
   var userData = JSON.parse(localStorage.getItem("userData"));
-  let data = {
+  let requestData = {
     employee: userData.id,
     isClockedIn: isClockIn,
   };
@@ -37,12 +37,12 @@ const clockInEmployee = (isClockIn) => async (dispatch) => {
   try {
     const { data } = await axios.post(
       "/api/v1/panel/clocked/add",
+      requestData,
       {
         headers: {
           Authorization: accessToken,
         },
-      },
-      data
+      }
     );
     dispatch({ type: DASHBOARD_DATA_SUCCESS, payload: data.data });
   } catch (error) {
